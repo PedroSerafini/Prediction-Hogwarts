@@ -1,4 +1,4 @@
-#Projeto API de Sugestão de Valores para Imóveis de Hogwarts
+# Projeto API de Sugestão de Valores para Imóveis de Hogwarts
 
 Este projeto implementa uma API que fornece sugestões de valores de aluguel e venda para imóveis próximos à Escola de Magia de Hogwarts. A API é desenvolvida em Python usando o framework Flask e utiliza um modelo de Machine Learning para realizar as previsões.
 
