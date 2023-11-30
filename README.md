@@ -18,15 +18,15 @@ O projeto é organizado da seguinte forma:
 
 Instale as dependências necessárias executando o seguinte comando no terminal:
 
-'''bash
+```bash
 pip install pandas scikit-learn Flask
-'''
+```
 
 Execute a aplicação Flask com o seguinte comando:
 
-'''bash
+```bash
 flask run
-'''
+```
 
 Certifique-se de que o arquivo app.py está no diretório atual e que o Flask está instalado corretamente.
 
