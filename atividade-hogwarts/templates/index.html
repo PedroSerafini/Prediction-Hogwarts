@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugestão de Valores</title>
+</head>
+<body>
+
+<h1>Sugestão de Valores</h1>
+
+<form id="formulario">
+    <label for="NumQuartos">NumQuartos:</label>
+    <input type="number" id="quartos" name="NumQuartos" required><br>
+
+    <label for="NumBanheiros">NumBanheiros:</label>
+    <input type="number" id="banheiros" name="NumBanheiros" required><br>
+
+    <label for="NumGaragens">NumGaragens:</label>
+    <input type="number" id="garagens" name="NumGaragens" required><br>
+
+    <label for="MetrosQuadrados">MetrosQuadrados:</label>
+    <input type="number" id="metros" name="MetrosQuadrados" required><br>
+
+    <label for="NumEncantamentos">NumEncantamentos:</label>
+    <input type="number" id="encantamento" name="NumEncantamentos" required><br>
+
+    <label for="QuadraQuadribol">QuadraQuadribol:</label>
+    <select id="quadra" name="QuadraQuadribol" required>
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+    </select><br>
+
+    <button type="button" onclick="enviarSolicitacao()">Enviar</button>
+</form>
+
+<script>
+    function enviarSolicitacao() {
+        var formulario = document.getElementById('formulario');
+        var dados = {
+            'NumQuartos': formulario.quartos.value,
+            'NumBanheiros': formulario.banheiros.value,
+            'NumGaragens': formulario.garagens.value,
+            'MetrosQuadrados': formulario.metros.value,
+            'NumEncantamentos': formulario.encantamento.value,
+            'QuadraQuadribol': formulario.quadra.value === 'true'
+        };
+
+        // Enviar a solicitação para a API Flask
+        fetch('http://127.0.0.1:5000/sugerir_valores', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dados)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Exibir os resultados
+            alert('Sugestão de Aluguel: $ ' + data.SugestaoAluguel + '\nSugestão de Venda: $ ' + data.SugestaoVenda);
+        })
+        .catch(error => {
+            console.error('Erro ao enviar solicitação:', error);
+        });
+    }
+</script>
+
+</body>
+</html>
